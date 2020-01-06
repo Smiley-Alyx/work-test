@@ -10,11 +10,6 @@ error_reporting(E_ALL);
 // Включаем буферизацию содержимого
 ob_start();
 
-// Определяем переменные для переключателя
-$mode = isset($_GET['mode'])  ? $_GET['mode'] : false;
-$user = isset($_SESSION['user']) ? $_SESSION['user'] : false;
-$err = array();
-
 // Устанавливаем ключ защиты
 define('security_key', true);
  
@@ -27,17 +22,32 @@ include './includes/database.php';
 // Подключаем скрипт с функциями
 include './includes/library.php';
 
+// Определяем переменные для обработчиков
+$mode = isset($_GET['mode'])  ? $_GET['mode'] : false;
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : false;
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : false;
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
+$err = array();
+
 // Обработчики
 switch($mode) {
 	case 'reg':
 		include './includes/registration/reg.php';
 		include './includes/registration/reg_form.html';
+		include './includes/registration/show.php';
 	break;
 
 	case 'auth':
 		include './includes/authentication/auth.php';
 		include './includes/authentication/auth_form.html';
 		include './includes/authentication/show.php';
+	break;
+
+	case 'lk':
+		include './includes/lk/user.php';
+		include './includes/lk/lk.php';
+		include './includes/lk/lk.html';
+		include './includes/lk/show.php';
 	break;
 }
 

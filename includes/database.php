@@ -7,7 +7,9 @@ if (!defined('security_key')) {
 
 try {
     $db = new PDO('mysql:host=localhost;dbname='.db_name, db_user, db_password, 
-        array(PDO::ATTR_PERSISTENT => true)
+        array(PDO::ATTR_PERSISTENT => true,
+        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+    	)
     );
 }
 catch(PDOException $e){
