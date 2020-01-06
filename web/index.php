@@ -14,13 +14,13 @@ ob_start();
 define('security_key', true);
  
 // Подключаем файл конфигурации
-include './config.php';
+include './core/config.php';
 
 // подключаем базу данных
-include './includes/database.php';
+include './core/database.php';
 
 // Подключаем скрипт с функциями
-include './includes/library.php';
+include './core/library.php';
 
 // Определяем переменные для обработчиков
 $mode = isset($_GET['mode'])  ? $_GET['mode'] : false;
@@ -29,25 +29,24 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : false;
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
 $err = array();
 
+include './app/view/head.php';
+
 // Обработчики
 switch($mode) {
 	case 'reg':
-		include './includes/registration/reg.php';
-		include './includes/registration/reg_form.html';
-		include './includes/registration/show.php';
+		include './app/function/reg.php';
+		include './app/view/reg_form.php';
 	break;
 
 	case 'auth':
-		include './includes/authentication/auth.php';
-		include './includes/authentication/auth_form.html';
-		include './includes/authentication/show.php';
+		include './app/function/auth.php';
+		include './app/view/auth_form.php';
 	break;
 
-	case 'lk':
-		include './includes/lk/user.php';
-		include './includes/lk/lk.php';
-		include './includes/lk/lk.html';
-		include './includes/lk/show.php';
+	default:
+		include './app/function/userdata.php';
+		include './app/function/lk.php';
+		include './app/view/lk_form.php';
 	break;
 }
 
@@ -56,4 +55,4 @@ $content = ob_get_contents();
 ob_end_clean();
 
 // Подключаем шаблон страницы
-include './html/index.html';		
+include './app/view/main.php';		

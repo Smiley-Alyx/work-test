@@ -69,7 +69,7 @@ if(isset($_POST['submit'])) {
 				$stmt->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 				$stmt->execute();
 				
-				header('Location:'. host .'?mode=reg&status=ok');
+				header('Location:'. host .'?mode=auth');
 				exit;
 			}
 		}

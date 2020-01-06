@@ -34,7 +34,7 @@ if(isset($_POST['submit']))
 				$_SESSION['username'] = $_POST['login'];
 				$_SESSION['user_id'] = $rows[0]['id'];
 				
-				header('Location:'. host .'?mode=auth');
+				header('Location:'. host);
 				exit;
 			}
 			else
