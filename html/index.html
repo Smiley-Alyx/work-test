@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Авторизация и регистрация</title>
+		<link href="./css/style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div>
+			<div>
+				<div>
+					<ul>
+						<li><a href="<?php echo host; ?>?mode=auth">Войти</a></li>
+						<li><a href="<?php echo host; ?>?mode=reg">Регистрация</a></li>
+					</ul>
+				</div>
+			</div>
+			<div>
+				<?php echo $content; ?>
+			</div>
+		</div>
+	</body>
+</html>
