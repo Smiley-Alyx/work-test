@@ -1,4 +1,13 @@
 <div class="container">
+    <h1>Личный кабинет пользователя </h1>
+    <div class="row">
+        <div class="col">
+            <h5>ФИО: <small class="text-muted"><?= $data['fullname'] ?></small></h3>
+            <h5>Email: <small class="text-muted"><?= $data['email'] ?></small></h3>
+        </div>
+    </div>
+</div>
+<div class="container">
     <h3>Изменение данных пользователя</h3>
     <div class="row">
         <div class="col-6">
